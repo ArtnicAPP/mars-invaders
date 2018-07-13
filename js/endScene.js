@@ -3,6 +3,10 @@ Crafty.defineScene("EndScreen", function(params){
     clearInterval(1);
     clearInterval(2);
     clearInterval(3);
+    clearInterval(4);
+    
+    if(localStorage.getItem("record") < hud.total)
+        localStorage.setItem("record", hud.total);
     
     Crafty.background("#000000 url(assets/background.png) no-repeat center center");
     
@@ -19,7 +23,7 @@ Crafty.defineScene("EndScreen", function(params){
     
     Crafty.e("Canvas, Text")
         .attr({x: 100, y: 100})
-        .text("Points: " + Math.ceil(bonus + score))
+        .text("Points: " + Math.ceil(bonus + hud.total))
         .textColor("white")
         .textFont({size: '24px'})
         .bind("KeyDown", function(evt){
@@ -34,6 +38,8 @@ Crafty.defineScene("EndScreen", function(params){
     .textColor("white")
     .bind("KeyDown", function(evt){
         if(evt.key == Crafty.keys.SPACE){
+            score = 0;
+            hud.total = 0;
             Crafty.enterScene('PlayScreen');
         }
     });

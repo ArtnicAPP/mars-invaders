@@ -32,9 +32,11 @@ Crafty.c("Player", {
                 }
             })
             .bind("UpdateFrame", function(){
-                bonus -= 0.001;
-                if(enemiesCount == 0)
-                    Crafty.enterScene("EndScreen", {result: "win"});
+                //bonus -= 0.5;
+                if(enemiesCount == 0){
+                    score = hud.total;
+                    Crafty.enterScene("PlayScreen", {result: "win"});
+                }
             });
    },
    shot: function(){

@@ -21,7 +21,7 @@ Crafty.c("PlayerShot", {
                 if(this.y <= -7){
                     this.destroy();
                     player.shotting = false;
-                    score -= 25;
+                    hud.total -= 25;
                 }
             });
    }
